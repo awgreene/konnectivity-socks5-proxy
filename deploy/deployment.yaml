@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socks5-proxy
+  namespace: openshift-operator-lifecycle-manager
+  labels:
+    app: socks5-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socks5-proxy
+  template:
+    metadata:
+      labels:
+        app: socks5-proxy
+    spec:
+      containers:
+      - name: socks5-proxy
+        image: quay.io/agreene/socks5-proxy:1
+        ports:
+        - containerPort: 8000
