@@ -5,6 +5,7 @@ WORKDIR /app
 
 COPY go.mod ./
 COPY go.sum ./
+COPY go.sum ./
 
 RUN go mod download
 
@@ -12,4 +13,4 @@ COPY *.go ./
 
 run go build -o /socks5-proxy
 
-CMD [ "/socks5-proxy" ]
+CMD [ "/socks5-proxy", "run"]

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: socks5-proxy
-  namespace: openshift-operator-lifecycle-manager
+  namespace: clusters-agreeneguest
   labels:
     app: socks5-proxy
 spec:
@@ -17,6 +17,14 @@ spec:
     spec:
       containers:
       - name: socks5-proxy
-        image: quay.io/agreene/socks5-proxy:1
+        image: quay.io/agreene/socks5-proxy:6
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /etc/konnectivity-proxy-tls
+          name: oas-konnectivity-proxy-cert
+      volumes:
+      - name: oas-konnectivity-proxy-cert
+        secret:
+          defaultMode: 420
+          secretName: konnectivity-client

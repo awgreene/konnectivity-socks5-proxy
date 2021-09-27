@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: socks5-proxy
-  namespace: openshift-operator-lifecycle-manager
+  namespace: clusters-agreeneguest
 spec:
   selector:
     app: socks5-proxy
   ports:
     - protocol: TCP
-      port: 8000
-      targetPort: 8000
+      port: 8080
+      targetPort: 8080
